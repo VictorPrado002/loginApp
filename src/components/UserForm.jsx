@@ -6,7 +6,7 @@ export const UserForm= ({handlerAddUser, initialUserForm, userSelected})=>{
   useEffect(()=>{
     setUserForm({
       ...userSelected,
-      password:'',
+      //password:'',
     });
   },[userSelected]);
     const onInputChange = ({ target }) => {
