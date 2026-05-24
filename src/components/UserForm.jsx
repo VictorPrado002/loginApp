@@ -20,7 +20,6 @@ export const UserForm= ({handlerAddUser, initialUserForm, userSelected})=>{
     });
   };
 
-
   const onSubmit = (event) => {
     event.preventDefault();
     if (!username || (!password&& id===0) || !email) {
