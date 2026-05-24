@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const UserForm= ({handlerAddUser, initialUserForm, userSelected})=>{
     const [userForm, setUserForm] = useState(initialUserForm);
 
+    const { id, username, password, email } = userForm;
   useEffect(()=>{
     setUserForm({
       ...userSelected,
@@ -18,7 +19,6 @@ export const UserForm= ({handlerAddUser, initialUserForm, userSelected})=>{
     });
   };
 
-  const { username, password, email } = userForm;
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -67,8 +67,16 @@ export const UserForm= ({handlerAddUser, initialUserForm, userSelected})=>{
           onChange={onInputChange}
         />
       </div>
+      <div className="col-md-6">
+        <input
+          type="hidden"
+          className="form-control"
+          name="id"
+          value={id}
+        />
+      </div>
       <button className="btn btn-primary w-50 my-4" type="submit">
-        Crear
+        {id>0?'Editar':'Crear'}
       </button>
     </form>
   );
