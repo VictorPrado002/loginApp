@@ -1,4 +1,4 @@
-export const UserRow = ({ id, username, email,password, handlerRemoveUser,handlerUserSelectedForm }) =>{
+export const UserRow = ({ id, username, email, handlerRemoveUser,handlerUserSelectedForm }) =>{
   
   return (
     <>
@@ -12,8 +12,7 @@ export const UserRow = ({ id, username, email,password, handlerRemoveUser,handle
               {
                 id,
                 username,
-                email,
-                password
+                email
               })}
             type="button" 
             className="btn btn-sm btn-warning">
