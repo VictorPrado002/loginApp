@@ -1,4 +1,48 @@
+import { useState } from "react";
+import Swal from "sweetalert2";
+
+const initialLoginForm={
+  username:'',
+  password:''
+};
+
 export const LoginPage = () => {
+  const [loginForm,setLoginForm] = useState(initialLoginForm);
+  const {username,password} = loginForm;
+
+  const onInputChange=({target})=>{
+    const {name,value}=target;
+    setLoginForm({
+      ...loginForm,
+      [name]:value,
+    });
+  }
+
+  const onSubmit = ()=>{
+    event.preventDefault();
+    if(!username || !password){
+      Swal.fire(
+        'Error de validación!',
+        'Username y password requeridos.',
+        'error'
+      )
+    }
+    
+    //implementar el login TODO
+    
+    if (username==='admin' && password==='12345'){
+      //handlerLogin();
+    }else{
+      Swal.fire(
+        'Error Login!',
+        'Username o password invalidos.',
+        'error'
+      )
+
+    }
+    setLoginForm(initialLoginForm);
+  }
+
   return (
     <>
       <div className="modal" tabIndex="-1" style={{display:"block"}}>
@@ -7,7 +51,7 @@ export const LoginPage = () => {
             <div className="modal-header">
               <h5 className="modal-title">Login Page</h5>
             </div>
-            <form className="form-signin m-auto w-75 " action="">
+            <form className="form-signin m-auto w-75 " onSubmit={onSubmit}>
               <div className="modal-body">
                 <div className="form-floating">
                   <input
@@ -15,6 +59,8 @@ export const LoginPage = () => {
                     className="form-control"
                     placeholder="Username"
                     name="username"
+                    value={username}
+                    onChange={onInputChange}
                   />
                   <label>Username</label>
                 </div>
@@ -23,7 +69,10 @@ export const LoginPage = () => {
                     type="password"
                     className="form-control"
                     placeholder="Password"
-                    name="Password"
+                    name="password"
+                    value={password}
+                    onChange={onInputChange}
+
                   />
                   <label>Password</label>
                 </div>
