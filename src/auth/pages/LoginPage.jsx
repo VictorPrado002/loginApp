@@ -1,51 +1,42 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-const initialLoginForm={
-  username:'',
-  password:''
+const initialLoginForm = {
+  username: "",
+  password: "",
 };
 
-export const LoginPage = () => {
-  const [loginForm,setLoginForm] = useState(initialLoginForm);
-  const {username,password} = loginForm;
+export const LoginPage = ({ handlerLogin }) => {
+  const [loginForm, setLoginForm] = useState(initialLoginForm);
+  const { username, password } = loginForm;
 
-  const onInputChange=({target})=>{
-    const {name,value}=target;
+  const onInputChange = ({ target }) => {
+    const { name, value } = target;
     setLoginForm({
       ...loginForm,
-      [name]:value,
+      [name]: value,
     });
-  }
+  };
 
-  const onSubmit = ()=>{
+  const onSubmit = () => {
     event.preventDefault();
-    if(!username || !password){
+    if (!username || !password) {
       Swal.fire(
-        'Error de validación!',
-        'Username y password requeridos.',
-        'error'
-      )
+        "Error de validación!",
+        "Username y password requeridos.",
+        "error",
+      );
     }
-    
-    //implementar el login TODO
-    
-    if (username==='admin' && password==='12345'){
-      //handlerLogin();
-    }else{
-      Swal.fire(
-        'Error Login!',
-        'Username o password invalidos.',
-        'error'
-      )
 
-    }
+    //implementar el login TODO
+    handlerLogin({ username, password });
+    
     setLoginForm(initialLoginForm);
-  }
+  };
 
   return (
     <>
-      <div className="modal" tabIndex="-1" style={{display:"block"}}>
+      <div className="modal" tabIndex="-1" style={{ display: "block" }}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -72,7 +63,6 @@ export const LoginPage = () => {
                     name="password"
                     value={password}
                     onChange={onInputChange}
-
                   />
                   <label>Password</label>
                 </div>
