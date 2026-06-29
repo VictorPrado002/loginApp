@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const Navbar = ({ login, handlerLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -14,6 +16,16 @@ export const Navbar = ({ login, handlerLogout }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        <div
+          className="collapse navbar-collapse "
+          id="navbarNav"
+        >
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink className='nav-link' to='/users'>Usuarios</NavLink>
+            </li>
+          </ul>
+        </div>
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
