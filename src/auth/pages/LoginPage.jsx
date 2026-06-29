@@ -36,11 +36,11 @@ export const LoginPage = ({ handlerLogin }) => {
 
   return (
     <>
-      <div className="modal" tabIndex="-1" style={{ display: "block" }}>
-        <div className="modal-dialog">
+      <div className="modal show d-block" tabIndex="-1" >
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Login Page</h5>
+            <div className="modal-header ">
+              <h5 className="modal-title text-center ">Login </h5>
             </div>
             <form className="form-signin m-auto w-75 " onSubmit={onSubmit}>
               <div className="modal-body">
@@ -70,13 +70,17 @@ export const LoginPage = ({ handlerLogin }) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    value="remember-me"
+                    value={true}
+                    name="remember"
+                    onChange={()=>{
+                      console.log(event.target.value)
+                    }}
                   />
                   <label className="form-check-label">Remember me</label>
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary w-100">
                   Login
                 </button>
               </div>
