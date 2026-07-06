@@ -88,12 +88,13 @@ export const UserForm= ({handlerAddUser, initialUserForm, userSelected,handlerCl
       <button className="btn btn-primary w-25 my-4" type="submit">
         {id>0?'Editar':'Crear'}
       </button>
-      <button 
+     
+      {!handlerCloseForm ||  <button 
         className="btn btn-danger w-25 mx-2"
         type="button"
         onClick={()=>onCloseForm()}>
             Cerrar
-      </button>
+      </button>}
     </form>
   );
 }
