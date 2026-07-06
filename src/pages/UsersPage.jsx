@@ -1,30 +1,19 @@
 import { UsersList } from "../components/UsersList";
 import { UserModalForm } from "../components/UserModalForm";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
-export const UsersPage = (
-  {
+export const UsersPage = () => {
+  const {
     users,
-    userSelected,
-    initialUserForm,
     visibleForm,
-    handlerAddUser,
-    handlerRemoveUser,
-    handlerUserSelectedForm,
     handlerOpenForm,
-    handlerCloseForm,
-  }
-) => {
-
+  } = useContext(UserContext);
   return (
     <>
     
       {!visibleForm || (
-        <UserModalForm
-          userSelected={userSelected}
-          handlerAddUser={handlerAddUser}
-          initialUserForm={initialUserForm}
-          handlerCloseForm={handlerCloseForm}
-        />
+        <UserModalForm/>
       )}
       <h2 className="text-center">Users App</h2>
       <div className="container my-4 ">
@@ -42,13 +31,7 @@ export const UsersPage = (
               <div className="alert alert-warning">
                 No hay usuarios en el sistema!
               </div>
-            ) : (
-              <UsersList
-                users={users}
-                handlerRemoveUser={handlerRemoveUser}
-                handlerUserSelectedForm={handlerUserSelectedForm}
-              />
-            )}
+            ) : (<UsersList/>)}
           </div>
         </div>
       </div>
