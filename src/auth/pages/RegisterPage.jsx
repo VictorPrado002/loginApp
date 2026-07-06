@@ -8,9 +8,12 @@ export const RegisterPage = ({users=[],handlerAddUser,initialUserForm}) =>{
     const {id} =useParams();
 
     useEffect(()=>{
-        const user=users.find(u=> u.id == id) || initialUserForm;
-        setUserSelected(user);
+        if (id){
+            const user=users.find(u=> u.id == id) || initialUserForm;
+            setUserSelected(user);
+        }
     },[id]);
+    
     return(
         <div className="container my-4">
             <h4>{userSelected.id>0? 'Editar': 'Registrar'} Usuaruio</h4>
